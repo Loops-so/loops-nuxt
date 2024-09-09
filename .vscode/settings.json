@@ -1,0 +1,7 @@
+{
+  "eslint.experimental.useFlatConfig": true,
+  "editor.formatOnSave": false,
+  "files.refactoring.autoSave": false,
+  "files.autoSaveWorkspaceFilesOnly": false,
+  "eslint.codeActionsOnSave.rules": null
+}
