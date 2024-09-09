@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/npm/dw/nuxt-loops?style=social&label=Downloads)](https://www.npmjs.com/package/nuxt-loops)
 
-This Nuxt module makes it easy to add the Loops [JavaScript SDK](/sdks/javascript) to your Nuxt project.
+This Nuxt module makes it easy to add the Loops [JavaScript SDK](https://loops.so/docs/sdks/javascript) to your Nuxt project.
 
 ## Installation
 
