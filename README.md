@@ -1,72 +1,47 @@
 # Loops Nuxt Module
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
-[![Nuxt][nuxt-src]][nuxt-href]
+This Nuxt module makes it easy to add the Loops [JavaScript SDK](/sdks/javascript) to your Nuxt project.
 
-My new Nuxt module for doing amazing things.
+## Installation
 
-- [✨ &nbsp;Release Notes](/CHANGELOG.md)
-  <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/loops-nuxt?file=playground%2Fapp.vue) -->
-  <!-- - [📖 &nbsp;Documentation](https://example.com) -->
-
-## Features
-
-<!-- Highlight some of the features your module provide here -->
-
-- ⛰ &nbsp;Foo
-- 🚠 &nbsp;Bar
-- 🌲 &nbsp;Baz
-
-## Quick Setup
-
-Install the module to your Nuxt application with one command:
+You can install the package [from npm](https://www.npmjs.com/package/nuxt-loops):
 
 ```bash
-npx nuxi module add loops-nuxt
+npm install nuxt-loops
 ```
 
-That's it! You can now use Loops Nuxt in your Nuxt app ✨
+You will need a Loops API key to use the module.
 
-## Contribution
+In your Loops account, go to the [API Settings page](https://app.loops.so/settings?page=api) and click **Generate key**.
 
-<details>
-  <summary>Local development</summary>
-  
-  ```bash
-  # Install dependencies
-  npm install
-  
-  # Generate type stubs
-  npm run dev:prepare
-  
-  # Develop with the playground
-  npm run dev
-  
-  # Build the playground
-  npm run dev:build
-  
-  # Run ESLint
-  npm run lint
-  
-  # Run Vitest
-  npm run test
-  npm run test:watch
-  
-  # Release new version
-  npm run release
-  ```
+Copy this key and save it in your application code (for example as `LOOPS_API_KEY` in an `.env` file).
 
-</details>
+Then add `nuxt-loops` to your modules list and add a reference to your API key:
 
-<!-- Badges -->
+```js nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['nuxt-loops'],
+  loops: {
+    apiKey: process.env.LOOPS_API_KEY
+  }
+});
+```
 
-[npm-version-src]: https://img.shields.io/npm/v/loops-nuxt/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/loops-nuxt
-[npm-downloads-src]: https://img.shields.io/npm/dm/loops-nuxt.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npmjs.com/package/loops-nuxt
-[license-src]: https://img.shields.io/npm/l/loops-nuxt.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/loops-nuxt
-[nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
-[nuxt-href]: https://nuxt.com
+## Usage
+
+To use the module, import `loops` from the request context.
+
+Then call one of the SDK methods. Read through the [JS SDK docs](https://loops.so/docs/sdks/javascript#methods) for more details.
+
+```javascript
+export default defineEventHandler(async (event) => {
+  const { loops } = event.context;
+
+  const response = await loops.updateContact("hello@gmail.com", {
+    firstName: "Bri",
+    lastName: "Chambers",
+  })
+});
+```
+
+See the API documentation to learn more about [rate limiting](https://loops.so/docs/api-reference#rate-limiting) and [error handling](/api-reference#debugging).
