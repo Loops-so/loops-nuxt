@@ -2,7 +2,15 @@
   "name": "nuxt-loops",
   "version": "1.0.0",
   "description": "Loops Nuxt Module",
-  "repository": "Loops-so/loops-nuxt",
+  "author": "Dan Rowden / Loops",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Loops-so/loops-nuxt.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Loops-so/loops-nuxt/issues"
+  },
+  "homepage": "https://github.com/Loops-so/loops-nuxt#readme",
   "license": "MIT",
   "type": "module",
   "exports": {

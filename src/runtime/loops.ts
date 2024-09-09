@@ -11,4 +11,4 @@ export default defineEventHandler((event) => {
   }
 
   event.context.loops = loops
-});
+})
