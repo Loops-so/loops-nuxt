@@ -21,9 +21,7 @@ export default defineNuxtModule<ModuleOptions>({
     apiKey: '',
   },
   setup(_options, _nuxt) {
-    if (!_options.apiKey) {
-      throw new Error('Loops API key is required')
-    }
+    const { apiKey } = _options
 
     const resolver = createResolver(import.meta.url)
 
@@ -31,13 +29,13 @@ export default defineNuxtModule<ModuleOptions>({
     addServerHandler({
       handler: resolver.resolve('./runtime/loops'),
       middleware: true,
-    });
+    })
 
     // Merge user config with default config
-    (_nuxt.options.runtimeConfig as RuntimeConfig).loops = defu(
-      (_nuxt.options.runtimeConfig as RuntimeConfig).loops,
+    _nuxt.options.runtimeConfig.loops = defu(
+      _nuxt.options.runtimeConfig.loops as RuntimeConfig,
       {
-        apiKey: _options.apiKey,
+        apiKey,
       },
     )
   },

@@ -7,8 +7,12 @@ let loops: LoopsClient | null = null
 export default defineEventHandler((event) => {
   if (!loops) {
     const config = useRuntimeConfig()
-    loops = new LoopsClient(config.loops.apiKey)
+    if (!config.loops.apiKey) {
+      throw new Error('Invalid or missing Loops API key.')
+    }
+    else {
+      loops = new LoopsClient(config.loops.apiKey)
+      event.context.loops = loops
+    }
   }
-
-  event.context.loops = loops
 })
